@@ -18,11 +18,11 @@
 	}
 	
 	function alertMessage($message) {
-		echo "<script type='text/javascript'>alert('$message');history.back();</script>";
+		echo "<script type='text/javascript'>alert(\"$message\");history.back();</script>";
 	}
 	
 	function redirectMessage($message, $redirect) {
-		echo "<script type='text/javascript'>alert('$message');window.location.href='$redirect';</script>";
+		echo "<script type='text/javascript'>alert(\"$message\");window.location.href='$redirect';</script>";
 	}
 	
 	function login_check($mysqli) {
@@ -93,11 +93,6 @@
 			}
 		}
 		return $errors;
-	}
-
-	function updateRequest($mysqli, $requestId, $amount, $approve) {
-		$status = ($approve ? 1 : 2);
-		$query = "UPDATE `balance_requests` SET `";
 	}
 		
 ?>

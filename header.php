@@ -75,9 +75,6 @@
                             <li>
                                 <a href="bodyguard-add.php">Add New Bodyguard</a>
                             </li>
-                            <li>
-                                <a href="bodyguard-view.php">View All Bodyguards</a>
-                            </li>
                         </ul>
                     </li>
                     <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "bookings") echo 'class="active"'; ?>>
@@ -87,7 +84,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="users" class="collapse">
                             <li>
-                                <a href="transactions.html">Pending Registrations</a>
+                                <a href="users-registration.php">Pending Registrations</a>
                             </li>
                         </ul>
                     </li>
@@ -98,7 +95,7 @@
                                 <a href="transactions.html">View All Transactions</a>
                             </li>
                             <li>
-                                <a href="pending-requests.html">Pending Requests</a>
+                                <a href="pending-requests.php">Pending Requests</a>
                             </li>
                         </ul>
                     </li>

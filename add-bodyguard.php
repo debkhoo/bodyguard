@@ -31,7 +31,7 @@
 				return;
 			}
 		}
-		$sql = "INSERT INTO `accounts` (`name`, `email`, `password`, `phone_number`, `account_type`) VALUES (?, ?, ?, ?, 1)";
+		$sql = "INSERT INTO `accounts` (`name`, `email`, `password`, `phone_number`, `account_type`, `approved`) VALUES (?, ?, ?, ?, 1, 1)";
 		if ($stmt = $mysqli->prepare($sql)) {
 			$stmt->bind_param('ssss', $name, $email, $password, $contact);
 			$stmt->execute();
