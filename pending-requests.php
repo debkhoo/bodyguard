@@ -33,15 +33,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
-                                    <tr>
-                                        <td>blabla</td>
-                                        <td>blabla</td>
-                                        <td>blabla</td>
-                                        <td><input></input></td>
-                                        <td><input type="checkbox" value=""></td>
-                                    </tr>
                                     
+                                    <?php
+                                        $result = $mysqli->query("SELECT * FROM `balance_requests` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
+                                        while($row = $result->fetch_array()) {
+								            echo "<tr>
+                                            <td>" . $row['name'] . "</td>
+                                            <td>" . $row['phone_number'] . "</td>
+                                            <td><a href='" . $row['image'] . "' target='_blank'>View</a></td>
+                                            <td><input type =\"textbox\"></td>
+                                            <td><input type=\"checkbox\" value =''>
+                                            </tr>";
+							}
+
+?>
                                 </tbody>
                             </table>
                 <button type="submit" class="btn btn-primary" style="float: right">Submit Button</button>
