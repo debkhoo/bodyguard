@@ -13,8 +13,16 @@
         session_regenerate_id(true); 
 	}
 	
-	function getPagePhp() {
-		return basename($_SERVER['PHP_SELF'], '.php');
+	function getPageName() {
+		return strstr(basename($_SERVER['PHP_SELF'], '.php'), "-", true );
+	}
+	
+	function alertMessage($message) {
+		echo "<script type='text/javascript'>alert('$message');history.back();</script>";
+	}
+	
+	function redirectMessage($message, $redirect) {
+		echo "<script type='text/javascript'>alert('$message');window.location.href='$redirect';</script>";
 	}
 	
 	function login_check($mysqli) {

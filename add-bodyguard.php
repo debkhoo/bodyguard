@@ -17,16 +17,26 @@
 		$height = $mysqli->real_escape_string($_POST['height']);
 		$weight = $mysqli->real_escape_string($_POST['weight']);
 		$grade = $mysqli->real_escape_string($_POST['grade']);
-		if ($grade < 1 || $grade > 4) {
-			header('Location: ./main.php?tab=2&error=3');
+		if (!is_numeric($height) || !is_numeric($weight)) {
+			alertMessage('Please enter ONLY numbers for the height and weight', 'main.php');
 			return;
+		} else if (!preg_match('/^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-[0-9]{4}$/', $birthday)) {
+			alertMessage('Please follow the format DD-MM-YYYY for the birthday!');
+			return;
+		}
+		$sql = "SELECT 1 FROM `accounts` WHERE `email` = '$email'";
+		if ($result = $mysqli->query($sql)) {
+			if ($result->num_rows > 0) {
+				alertMessage('The email is already in use!');
+				return;
+			}
 		}
 		$sql = "INSERT INTO `accounts` (`name`, `email`, `password`, `phone_number`, `account_type`) VALUES (?, ?, ?, ?, 1)";
 		if ($stmt = $mysqli->prepare($sql)) {
 			$stmt->bind_param('ssss', $name, $email, $password, $contact);
 			$stmt->execute();
 			if ($stmt->affected_rows == 0) {
-				header('Location: ./main.php?tab=2&error=5');
+				alertMessage('Problem adding the bodyguard\'s account.');
 				return;
 			}
 			$accountId = mysqli_insert_id($mysqli);
@@ -38,26 +48,26 @@
 						$stmt->bind_param('iiiisi', $accountId, $birthday, $height, $weight, $desc, $grade);
 						$stmt->execute();
 						if ($stmt->affected_rows == 0) {
-							header('Location: ./main.php?tab=2&error=4');
+							alertMessage('Problem adding the bodyguard. Error 1');
 							return;
 						} else {
-							header('Location: ./main.php?tab=2&success=0');
+							redirectMessage('Successfully added the bodyguard', 'home.php');
 							return;
 						}
 					} else {
-						header('Location: ./main.php?tab=2&error=2');
+						alertMessage('Problem adding the bodyguard. Error 2');
 						return;
 					}
 				} else {
-					header('Location: ./main.php?tab=2&error=3');
+					alertMessage('Problem adding the bodyguard. Error 3');
 					return;
 				}
 			} else {
-				header('Location: ./main.php?tab=2&error=2');
+				alertMessage('Problem adding the bodyguard. Error 4');
 				return;
 			}
 		} else {
-			header('Location: ./main.php?tab=2&error=1');
+			alertMessage('Problem adding the bodyguard. Error 5');
 			return;
 		}
 	}
@@ -112,7 +122,7 @@
 				$stmt->bind_param('si', $url, $merchantID);
 				$stmt->execute();
 				if ($stmt->affected_rows == 0) {
-					header('Location: ./main.php?tab=2&error=6');
+					alertMessage('Problem adding the bodyguard. Error 6');
 					return false;
 				}
 			}

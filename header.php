@@ -69,21 +69,21 @@
                     <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "home") echo 'class="active"';?>>
                         <a href="home.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "bodyguard") echo 'class="active"'; ?>>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-street-view"></i> Bodyguard<i class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="transaction" class="collapse">
+                    <li <?php if (getPageName() === "bodyguard") echo 'class="active"'; ?>>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#bodyguard"><i class="fa fa-fw fa-street-view"></i> Bodyguard<i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="bodyguard" class="collapse">
                             <li>
-                                <a href="transactions.html">Add New Bodyguard</a>
+                                <a href="bodyguard-add.php">Add New Bodyguard</a>
                             </li>
                             <li>
-                                <a href="pending-requests.html">View All Bodyguards</a>
+                                <a href="bodyguard-view.php">View All Bodyguards</a>
                             </li>
                         </ul>
                     </li>
                     <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "bookings") echo 'class="active"'; ?>>
                         <a href="bookings.html"><i class="fa fa-fw fa-cart-plus"></i> Bookings</a>
                     </li>
-                    <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "users") echo 'class="active"'; ?>>
+                    <li <?php if (getPageName() === "users") echo 'class="active"'; ?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="users" class="collapse">
                             <li>
@@ -91,7 +91,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li <?php if (getPageName() === "transactions") echo 'class="active"'; ?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#transaction"><i class="fa fa-fw fa-credit-card"></i> Transactions <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="transaction" class="collapse">
                             <li>
