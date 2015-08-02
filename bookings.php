@@ -45,7 +45,7 @@
                                             <td>" . $row['num_requested'] . "</td>
                                             <td>" . $date . "</td>
                                             <td>" . $row['duration'] . "</td>
-                                            <td><a href='' target='_blank'>More</a></td>
+                                            <td><a href='' target='_blank' class='fa fa-fw fa-wrench'></a></td>
                                             </tr>";
 							}
 

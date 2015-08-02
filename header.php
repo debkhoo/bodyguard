@@ -78,7 +78,7 @@
                         </ul>
                     </li>
                     <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "bookings") echo 'class="active"'; ?>>
-                        <a href="bookings.html"><i class="fa fa-fw fa-cart-plus"></i> Bookings</a>
+                        <a href="bookings.php"><i class="fa fa-fw fa-cart-plus"></i> Bookings</a>
                     </li>
                     <li <?php if (getPageName() === "users") echo 'class="active"'; ?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
