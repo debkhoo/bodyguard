@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Pending Requests
+                            Bookings
                         </h1>
                         
                     </div>
@@ -27,22 +27,25 @@
                                         
                                         <th>Account Name</th>
                                         <th>Contact Number</th>
-                                        <th>Image</th>
-                                        <th>Amount</th>
-                                        <th>Reject</th>
+                                        <th>Number Requested</th>
+                                        <th>Time</th>
+                                        <th>Duration</th>
+                                        <th>More</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     
                                     <?php
-                                        $result = $mysqli->query("SELECT * FROM `balance_requests` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
+                                        $result = $mysqli->query("SELECT * FROM `bookings` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
                                         while($row = $result->fetch_array()) {
+                                            $date = date("M j, Y, g:i a", $row['time_slot']/1000);
 								            echo "<tr>
                                             <td>" . $row['name'] . "</td>
                                             <td>" . $row['phone_number'] . "</td>
-                                            <td><a href='" . $row['image'] . "' target='_blank'>View</a></td>
-                                            <td><input type =\"textbox\"></td>
-                                            <td><input type=\"checkbox\" value =''>
+                                            <td>" . $row['num_requested'] . "</td>
+                                            <td>" . $date . "</td>
+                                            <td>" . $row['duration'] . "</td>
+                                            <td><a href='' target='_blank'>More</a></td>
                                             </tr>";
 							}
 

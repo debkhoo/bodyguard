@@ -24,7 +24,7 @@
 									<thead>
 										<tr>
 											<th>Account Name</th>
-											<th>Telephone Num</th>
+											<th>Contact Number</th>
 											<th>Email</th>
 											<th>Approve</th>
 										</tr>
