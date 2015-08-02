@@ -10,9 +10,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Pending Requests
+                            User Registration
                         </h1>
-                        
                     </div>
                 </div>
                 <!-- /.row -->
@@ -27,21 +26,24 @@
                                         
                                         <th>Account Name</th>
                                         <th>Telephone Num</th>
-                                        <th>Image</th>
-                                        <th>Amount</th>
-                                        <th>Reject</th>
+                                        <th>Email</th>
+                                        <th>Approve</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
-                                    <tr>
-                                        <td>blabla</td>
-                                        <td>blabla</td>
-                                        <td>blabla</td>
-                                        <td><input></input></td>
-                                        <td><input type="checkbox" value=""></td>
-                                    </tr>
                                     
+                                     <?php
+$result = $mysqli->query( "SELECT `id`, `email`, `name`, `phone_number` FROM `accounts` WHERE `approved` = 0");
+							while($row = $result->fetch_array()) {
+								echo "<tr><td>" . $row['name'] . "</td>
+                                <td>" . $row['phone_number'] . "</td>
+                                <td>" . $row['email'] . "</td>
+                                <td><input type=\"checkbox\" value=''>
+                                    </tr>";
+							}
+
+?>
+                               
                                 </tbody>
                             </table>
                 <button type="submit" class="btn btn-primary" style="float: right">Submit Button</button>
