@@ -144,6 +144,19 @@ body {
     }
 }
 
+.table .table-hover .table-striped{
+    padding: 100px;
+}
+
+#accept{
+    color:forestgreen;
+}
+
+#reject{
+    color: darkred;
+}
+
+
 /* Top Navigation */
 
 .top-nav {
