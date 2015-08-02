@@ -6,7 +6,7 @@
 		$user = $mysqli->real_escape_string($_POST['username']);
 		$pass = $mysqli->real_escape_string($_POST['password']);
 		if (login($user, $pass, $mysqli)) {
-			header('Location: main.php') ;
+			header('Location: home.php') ;
 		} else {
 			header('Location: ./index.php?error=1') ;
 		}
