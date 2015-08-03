@@ -92,9 +92,6 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#transaction"><i class="fa fa-fw fa-credit-card"></i> Transactions <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="transaction" class="collapse">
                             <li>
-                                <a href="transactions.html">View All Transactions</a>
-                            </li>
-                            <li>
                                 <a href="pending-requests.php">Pending Requests</a>
                             </li>
                         </ul>

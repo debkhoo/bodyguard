@@ -47,7 +47,7 @@
 								   
 									</tbody>
 								</table>
-							<button type="submit" class="btn btn-primary" style="float: right">Save Changes</button>
+							<button type="submit" class="btn btn-primary" style="float: right">Confirm Changes</button>
 						</form>
                     </div>
 

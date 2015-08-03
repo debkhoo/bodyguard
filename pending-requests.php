@@ -20,7 +20,7 @@
                   <div class="col-lg-12">
                         <div class="table-responsive">
                             
-                            <form role="form">
+                            <form role="form" method="POST" action="balance-request-update.php">
                             <table class="table table-hover table-striped table-condensed">
                                 <thead>
                                     <tr>
@@ -33,23 +33,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
-                                    <?php
-                                        $result = $mysqli->query("SELECT * FROM `balance_requests` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
-                                        while($row = $result->fetch_array()) {
-								            echo "<tr>
-                                            <td>" . $row['name'] . "</td>
-                                            <td>" . $row['phone_number'] . "</td>
-                                            <td><a href='" . $row['image'] . "' target='_blank'>View</a></td>
-                                            <td><input type =\"textbox\"></td>
-                                            <td><input type=\"checkbox\" value =''>
-                                            </tr>";
-							}
+								<?php
+									$result = $mysqli->query("SELECT *, `balance_requests`.`id` AS `brid` FROM `balance_requests` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
+									$i = 0;
+									while($row = $result->fetch_array()) {
+										echo "<tr>
+										<input type='hidden' name='brid[]' value='" . $row['brid'] . "'>
+										<td>" . $row['name'] . "</td>
+										<td>" . $row['phone_number'] . "</td>
+										<td><a href='" . $row['image'] . "' target='_blank'>View</a></td>
+										<td><input name='amount[]' type ='text'></td>
+										<td><input name='reject'[" . $i . ']" value="0" type="hidden"><input name="reject[' . $i . ']" value="1" type="checkbox"></td>
+										</tr>';
+										$i += 0;
+									}
 
-?>
+								?>
                                 </tbody>
                             </table>
-                <button type="submit" class="btn btn-primary" style="float: right">Submit Button</button>
+						<button type="submit" class="btn btn-primary" style="float: right">Confirm Changes</button>
                  </form>
                     </div>
 

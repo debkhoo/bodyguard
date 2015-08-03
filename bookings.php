@@ -30,13 +30,12 @@
                                         <th>Number Requested</th>
                                         <th>Time</th>
                                         <th>Duration</th>
-                                        <th>More</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
                                     <?php
-                                        $result = $mysqli->query("SELECT * FROM `bookings` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
+                                        $result = $mysqli->query("SELECT *, `bookings`.`id` AS `booking_id` FROM `bookings` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 0");
                                         while($row = $result->fetch_array()) {
                                             $date = date("M j, Y, g:i a", $row['time_slot']/1000);
 								            echo "<tr>
@@ -45,17 +44,15 @@
                                             <td>" . $row['num_requested'] . "</td>
                                             <td>" . $date . "</td>
                                             <td>" . $row['duration'] . "</td>
-                                            <td><a href='' target='_blank' class='fa fa-fw fa-wrench'></a></td>
+                                            <td><a href='booking-details.php?id=" . $row['booking_id'] ."' target='_blank' class='fa fa-fw fa-wrench'></a></td>
                                             </tr>";
-							}
+										}
 
-?>
+									?>
                                 </tbody>
                             </table>
-                <button type="submit" class="btn btn-primary" style="float: right">Submit Button</button>
-                 </form>
+						</form>
                     </div>
-
             </div>
             <!-- /.container-fluid -->
 
