@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Users
+                            All Users
                         </h1>
                         
                     </div>
@@ -28,18 +28,20 @@
                                         <th>Account Name</th>
                                         <th>Contact Number</th>
                                         <th>Email</th>
+                                        <th>Balance</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 									<?php
-										$result = $mysqli->query( "SELECT `id`, `email`, `name`, `phone_number` FROM `accounts` WHERE `approved` = 1");
+										$result = $mysqli->query( "SELECT `id`, `email`, `name`, `phone_number`, `balance` FROM `accounts` WHERE `approved` = 1 ORDER BY `name`");
 										$i = 0;
 										while($row = $result->fetch_array()) {
 											echo "<tr>
 											<input type='hidden' name='ids[]' value='" . $row['id'] . "'>
 											<td>" . $row['name'] . "</td>
 											<td>" . $row['phone_number'] . "</td>
-											<td>" . $row['email'] . '</td>
+                                            <td>" . $row['email'] . "</td>
+											<td>" . $row['balance'] . '</td>
 											</tr>';
 											$i += 1;
 										}

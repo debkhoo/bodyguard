@@ -75,6 +75,9 @@
                             <li>
                                 <a href="bodyguard-add.php">Add New Bodyguard</a>
                             </li>
+                            <li>
+                                <a href="bodyguards.php">View All Bodyguards</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "bookings") echo 'class="active"'; ?>>
