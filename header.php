@@ -86,6 +86,9 @@
                             <li>
                                 <a href="users-registration.php">Pending Registrations</a>
                             </li>
+                            <li>
+                                <a href="users.php">View All Users</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?php if (getPageName() === "transactions") echo 'class="active"'; ?>>
