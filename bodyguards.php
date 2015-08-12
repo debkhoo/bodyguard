@@ -19,7 +19,7 @@
                   <div class="col-lg-12">
                         <div class="table-responsive">
                             
-                            <form role="form" method="POST" action="approve-user.php">
+                           
 								<table class="table table-hover table-striped table-condensed">
 									<thead>
 										<tr>
@@ -55,8 +55,7 @@
 								?>
                                 </tbody>
 								</table>
-							<button type="submit" class="btn btn-primary" style="float: right">Confirm Changes</button>
-						</form>
+							
                     </div>
 
             </div>
