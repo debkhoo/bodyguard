@@ -29,22 +29,22 @@
                                         <th>Contact Number</th>
                                         <th>Email</th>
                                         <th>Balance</th>
+                                        <th>More Info</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 									<?php
-										$result = $mysqli->query( "SELECT `id`, `email`, `name`, `phone_number`, `balance` FROM `accounts` WHERE `approved` = 1 ORDER BY `name`");
+										$result = $mysqli->query("SELECT * FROM `accounts` WHERE `account_type` = 0 ORDER BY `name`");
 										$i = 0;
 										while($row = $result->fetch_array()) {
-											echo "<tr>
-											<input type='hidden' name='ids[]' value='" . $row['id'] . "'>
-											<td>" . $row['name'] . "</td>
-											<td>" . $row['phone_number'] . "</td>
-                                            <td>" . $row['email'] . "</td>
-											<td>" . $row['balance'] . '</td>
-											</tr>';
-											$i += 1;
-										}
+										echo "<tr>
+										<td>" . $row['name'] . "</td>
+										<td>" . $row['phone_number'] . "</td>
+										<td>" . $row['email'] . "</td>
+                                        <td>" . $row['balance'] . "</td>
+                                        <td><a href='profile.php?id=" . $row['id'] ."' target='' class='fa fa-fw fa-info-circle'></a></td>
+								        </tr>";
+									}
 									?>
 								   
 									</tbody>

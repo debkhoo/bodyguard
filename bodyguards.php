@@ -26,30 +26,21 @@
 											<th>Account Name</th>
 											<th>Contact Number</th>
 											<th>Email</th>
-											<th>Age</th>
-                                            <th>Description</th>
-                                            <th>Height</th>
-                                            <th>Weight</th>
-                                            <th>Grade</th>
+                                            <th>More Info</th>
 										</tr>
 									</thead>
 									<tbody>
 								<?php
-									$result = $mysqli->query("SELECT *, `bodyguards`.`id` AS `bgid` FROM `bodyguards` LEFT JOIN `accounts` ON `bodyguards`.`id` = `accounts`.`id` ORDER BY `name`");
+									$result = $mysqli->query("SELECT * FROM `accounts` WHERE `account_type` = 1 ORDER BY `name`");
 									$i = 0;
                                     
 									while($row = $result->fetch_array()) {
 										echo "<tr>
-										<input type='hidden' name='bgid[]' value='" . $row['bgid'] . "'>
 										<td>" . $row['name'] . "</td>
 										<td>" . $row['phone_number'] . "</td>
 										<td>" . $row['email'] . "</td>
-                                        <td>" . $row[''] . "</td>
-                                        <td>" . $row['experience'] . "</td>
-                                        <td>" . $row['height'] . "</td>
-                                        <td>" . $row['weight'] . "</td>
-                                        <td>" . $row[''] . '</td>
-											</tr>';
+                                        <td><a href='profile.php?id=" . $row['id'] ."' target='' class='fa fa-fw fa-info-circle'></a></td>
+								        </tr>";
 									}
 
 								?>
