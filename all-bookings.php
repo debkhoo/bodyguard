@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            All Users
+                            All Bookings
                         </h1>
                         
                     </div>
@@ -27,27 +27,27 @@
                                         
                                         <th>Account Name</th>
                                         <th>Contact Number</th>
-                                        <th>Email</th>
-                                        <th>Balance</th>
-                                        <th>More Info</th>
+                                        <th>Number Requested</th>
+                                        <th>Time</th>
+                                        <th>Duration</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-									<?php
-										$result = $mysqli->query("SELECT * FROM `accounts` WHERE `account_type` = 0 AND `approved` = 1 ORDER BY `name`");
-										$i = 0;
-										while($row = $result->fetch_array()) {
-										echo "<tr>
-										<td>" . $row['name'] . "</td>
-										<td>" . $row['phone_number'] . "</td>
-										<td>" . $row['email'] . "</td>
-                                        <td>" . $row['balance'] . "</td>
-                                        <td><a href='profile.php?id=" . $row['id'] ."' target='' class='fa fa-fw fa-info-circle'></a></td>
-								        </tr>";
-									}
+                                    <?php
+                                        $result = $mysqli->query("SELECT *, `bookings`.`id` AS `booking_id` FROM `bookings` LEFT JOIN `accounts` ON `account_id` = `accounts`.`id` WHERE `status` = 1");
+                                        while($row = $result->fetch_array()) {
+                                            $date = date("M j, Y, g:i a", $row['time_slot']/1000);
+								            echo "<tr>
+                                            <td>" . $row['name'] . "</td>
+                                            <td>" . $row['phone_number'] . "</td>
+                                            <td>" . $row['num_requested'] . "</td>
+                                            <td>" . $date . "</td>
+                                            <td>" . $row['duration'] . "</td>
+                                            </tr>";
+										}
+
 									?>
-								   
-									</tbody>
+                                </tbody>
                             </table>
 						</form>
                     </div>

@@ -80,8 +80,16 @@
                             </li>
                         </ul>
                     </li>
-                    <li <?php if (basename($_SERVER['PHP_SELF'], '.php') === "bookings") echo 'class="active"'; ?>>
-                        <a href="bookings.php"><i class="fa fa-fw fa-cart-plus"></i> Bookings</a>
+                    <li <?php if (getPageName() === "bookings") echo 'class="active"'; ?>>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#bookings"><i class="fa fa-fw fa-cart-plus"></i> Bookings <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="bookings" class="collapse">
+                            <li>
+                                <a href="bookings.php">Bookings</a>
+                            </li>
+                            <li>
+                                <a href="all-bookings.php">View All Bookings</a>
+                            </li>
+                        </ul>
                     </li>
                     <li <?php if (getPageName() === "users") echo 'class="active"'; ?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
@@ -99,6 +107,9 @@
                         <ul id="transaction" class="collapse">
                             <li>
                                 <a href="pending-requests.php">Pending Requests</a>
+                            </li>
+                            <li>
+                                <a href="past-transactions.php">Past Transactions</a>
                             </li>
                         </ul>
                     </li>
