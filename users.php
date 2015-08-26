@@ -30,6 +30,7 @@
                                         <th>Email</th>
                                         <th>Balance</th>
                                         <th>More Info</th>
+                                        <th>Deleted</th>
                                     </tr>
                                 </thead>
                                 <tbody>
